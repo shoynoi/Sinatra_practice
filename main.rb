@@ -6,7 +6,7 @@ get '/' do
   erb :index
 end
 
-get '/new' do
+get '/memos/new' do
   erb :new
 end
 
@@ -25,7 +25,7 @@ helpers do
 
 end
 
-post '/create' do
+post '/memos/create' do
   id = max_id + 1
   @title = params[:title]
   @content = params[:content]
@@ -43,10 +43,10 @@ post '/create' do
       JSON.dump(hash, f)
     end
   end
-  redirect to("/show/#{id}")
+  redirect to("/memos/#{id}")
 end
 
-get '/show/:id' do
+get '/memos/:id' do
   @memo = @memos[params[:id]]
   erb :show
 end
