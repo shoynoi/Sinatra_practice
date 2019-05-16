@@ -65,7 +65,7 @@ get '/memos/:id/edit' do
   erb :edit
 end
 
-put '/memos/:id' do
+patch '/memos/:id' do
   memo = @memos[params[:id]]
   memo['title'] = params[:title]
   memo['content'] = params[:content]
