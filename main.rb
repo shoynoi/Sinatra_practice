@@ -18,17 +18,12 @@ helpers do
                end
              end
   end
-
-  def max_id
-    @memos.nil? ? 0 : @memos.keys.map(&:to_i).max
-  end
-
 end
 
 post '/memos/create' do
-  id = max_id + 1
-  @title = params[:title]
-  @content = params[:content]
+  id = Time.now.strftime('%Y%m%d%H%M%S%L').to_i.to_s(36)
+  title = params[:title]
+  content = params[:content]
   created_at = Time.now
 
   hash = { id => { title: @title, content: @content, create_at: created_at } }
