@@ -25,17 +25,25 @@ post '/memos/create' do
   title = params[:title]
   content = params[:content]
   created_at = Time.now
+  updated_at = Time.now
 
-  hash = { id => { title: @title, content: @content, create_at: created_at } }
+  memo = {
+    id => {
+      title: title,
+      content: content,
+      created_at: created_at,
+      updated_at: updated_at
+    }
+  }
 
   if @memos
-    @memos.merge!(hash)
+    @memos.merge!(memo)
     File.open('memo.json', 'w') do |f|
       JSON.dump(@memos, f)
     end
   else
     File.open('memo.json', 'w') do |f|
-      JSON.dump(hash, f)
+      JSON.dump(memo, f)
     end
   end
   redirect to("/memos/#{id}")
