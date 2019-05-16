@@ -1,0 +1,18 @@
+<div>
+  <div>
+    <p>タイトル</p>
+    <p><%= @memo["title"] %></p>
+  </div>
+  <div>
+    <p>内容</p>
+    <p><%= @memo["content"] %></p>
+  </div>
+</div>
+<div>
+  <div>
+    <a href="/memos/<%= params[:id] %>/edit">変更</a>
+  </div>
+  <div>
+    <a href="/memos/<%= params[:id] %>/destroy">削除</a>
+  </div>
+</div>
