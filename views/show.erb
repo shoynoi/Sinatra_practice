@@ -13,7 +13,10 @@
     <a href="/memos/<%= params[:id] %>/edit">変更</a>
   </div>
   <div>
-    <a href="/memos/<%= params[:id] %>/destroy">削除</a>
+    <form action="/memos/<%= params[:id] %>" method="post">
+      <input type="hidden" name="_method" value="DELETE">
+      <button type="submit">削除</button>
+    </form>
   </div>
   <div>
     <a href="/">トップに戻る</a>

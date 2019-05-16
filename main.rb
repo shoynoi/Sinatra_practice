@@ -76,3 +76,11 @@ patch '/memos/:id' do
   end
   redirect to("/memos/#{params[:id]}")
 end
+
+delete '/memos/:id' do
+  @memos.delete(params[:id])
+  File.open('memo.json', 'w') do |f|
+    JSON.dump(@memos, f)
+  end
+  redirect to('/')
+end
