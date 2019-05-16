@@ -20,6 +20,12 @@ helpers do
                end
              end
   end
+
+  def update_json(memo)
+    File.open('memo.json', 'w') do |f|
+      JSON.dump(memo, f)
+    end
+  end
 end
 
 before do
@@ -44,13 +50,9 @@ post '/memos/create' do
 
   if @memos
     @memos.merge!(memo)
-    File.open('memo.json', 'w') do |f|
-      JSON.dump(@memos, f)
-    end
+    update_json(@memos)
   else
-    File.open('memo.json', 'w') do |f|
-      JSON.dump(memo, f)
-    end
+    update_json(memo)
   end
   redirect to("/memos/#{id}")
 end
@@ -71,16 +73,12 @@ patch '/memos/:id' do
   memo['content'] = params[:content]
   memo['updated_at'] = Time.now
 
-  File.open('memo.json', 'w') do |f|
-    JSON.dump(@memos, f)
-  end
+  update_json(@memos)
   redirect to("/memos/#{params[:id]}")
 end
 
 delete '/memos/:id' do
   @memos.delete(params[:id])
-  File.open('memo.json', 'w') do |f|
-    JSON.dump(@memos, f)
-  end
+  update_json(@memos)
   redirect to('/')
 end
