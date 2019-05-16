@@ -2,6 +2,8 @@ require 'sinatra'
 require 'sinatra/reloader'
 require 'json'
 
+enable :method_override
+
 get '/' do
   erb :index
 end
@@ -18,6 +20,10 @@ helpers do
                end
              end
   end
+end
+
+before do
+  find_json
 end
 
 post '/memos/create' do
@@ -52,4 +58,21 @@ end
 get '/memos/:id' do
   @memo = @memos[params[:id]]
   erb :show
+end
+
+get '/memos/:id/edit' do
+  @memo = @memos[params[:id]]
+  erb :edit
+end
+
+put '/memos/:id' do
+  memo = @memos[params[:id]]
+  memo['title'] = params[:title]
+  memo['content'] = params[:content]
+  memo['updated_at'] = Time.now
+
+  File.open('memo.json', 'w') do |f|
+    JSON.dump(@memos, f)
+  end
+  redirect to("/memos/#{params[:id]}")
 end

@@ -1,0 +1,8 @@
+<form action="/memos/<%= params[:id] %>" method="post">
+  <label for="title">タイトル</label>
+  <input type="text" name="title" id="title" value="<%= @memo['title'] %>">
+  <label for="content">内容</label>
+  <textarea name="content" id="content" cols="30" rows="10"><%= @memo['content'] %></textarea>
+  <input type="hidden" name="_method" value="PUT">
+  <button type="submit">変更</button>
+</form>
