@@ -5,6 +5,7 @@ require 'json'
 enable :method_override
 
 get '/' do
+  @sorted_memos = @memos.sort_by { |_id, memo| memo['updated_at'] }.reverse
   erb :index
 end
 
