@@ -31,7 +31,7 @@ helpers do
   def validate_empty
     @error_messages = []
     params.each do |key, value|
-      next unless value.empty?
+      next unless value.match?(/\A[[:space:]]*\z/)
 
       @error_messages << "#{key}を入力してください"
     end
