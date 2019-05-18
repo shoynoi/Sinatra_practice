@@ -1,12 +1,4 @@
-<div>
-  <% if @error_messages&.any? %>
-    <ul class="list-errors">
-      <% @error_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-    </ul>
-  <% end %>
-</div>
+<%= render :erb, :'error_messages' %>
 <form action="/memos/<%= params[:id] %>" method="post">
   <div class="form-items">
     <div class="form-item">
