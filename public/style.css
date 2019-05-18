@@ -112,7 +112,7 @@ header {
     text-decoration: none;
 }
 
-ul {
+.list-title {
     color: #1e366a;
     border-top: solid #1e366a 1px;
     border-bottom: solid #1e366a 1px;
@@ -122,4 +122,11 @@ ul {
 ul li {
     line-height: 1.5;
     padding: 0.5em 0;
+}
+
+.list-errors {
+    color: indianred;
+    background-color: #fff3f6;
+    border: solid indianred 1px;
+    padding: 0.5em 0 0.5em 1.5em;
 }
