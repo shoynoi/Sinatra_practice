@@ -108,6 +108,10 @@ header {
     border-bottom: solid 1px #d2d1d2;
 }
 
+.title-link {
+    font-weight: bold;
+    color: #4638a0;
+}
 .title-link:hover {
     text-decoration: none;
 }
