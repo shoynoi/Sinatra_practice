@@ -1,0 +1,100 @@
+body {
+    padding: 40px 0 70px 70px;
+}
+
+.container {
+    width: 50%;
+}
+
+.btn {
+    border-radius: 5px;
+    width: 100px;
+    height: 40px;
+    font-size: 1em;
+    margin-right: 1em;
+    cursor: pointer;
+}
+
+.btn-items {
+    display: flex;
+    justify-content: center;
+    padding: 1.5em 0;
+}
+
+.btn-primary {
+    background-color: dodgerblue;
+    color: white;
+    font-weight: bold;
+}
+
+.btn-success {
+    background-color: forestgreen;
+    color: white;
+    font-weight: bold;
+}
+
+.btn-secondary {
+    background-color: white;
+    color: black;
+    border-color: #c2c2c2;
+    font-weight: bold;
+}
+
+.btn-danger {
+    background-color: #dc4268;
+    color: white;
+    font-weight: bold;
+}
+
+.btn-warning {
+    background-color: coral;
+    color: white;
+    font-weight: bold;
+}
+
+.form-item {
+    margin-bottom: 2em;
+}
+
+.label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.text-input {
+    width: 100%;
+    font-size: 1em;
+    padding: 0.5em;
+    border: solid 1px #c1c5b9;
+    border-radius: 5px;
+}
+
+.textarea {
+    width: 100%;
+    font-size: 1em;
+    padding: 0.5em;
+    border: solid 1px #c1c5b9;
+    border-radius: 5px;
+    min-height: 10em;
+    resize: vertical;
+}
+
+.memo {
+    margin-left: 1em;
+}
+
+.memo-title {
+    margin: 0;
+}
+
+.memo-header {
+    padding-bottom: .5em;
+    border-bottom: solid 1px #d2d1d2;
+}
+
+.memo-body {
+    padding: 0.5em 0;
+    border-bottom: solid 1px #d2d1d2;
+}
+

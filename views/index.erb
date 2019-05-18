@@ -1,6 +1,5 @@
-<% @sorted_memos.each do |id, memo| %>
-  <ul>
+<ul>
+  <% @sorted_memos.each do |id, memo| %>
     <li><a href="/memos/<%= id %>"><%= memo['title'] %></a></li>
-  </ul>
-<% end %>
-<a href="/memos/new">追加</a>
+  <% end %>
+</ul>

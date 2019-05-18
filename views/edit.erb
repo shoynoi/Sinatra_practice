@@ -1,9 +1,17 @@
 <form action="/memos/<%= params[:id] %>" method="post">
-  <label for="title">タイトル</label>
-  <input type="text" name="title" id="title" value="<%= @memo['title'] %>">
-  <label for="content">内容</label>
-  <textarea name="content" id="content" cols="30" rows="10"><%= @memo['content'] %></textarea>
+  <div class="form-items">
+    <div class="form-item">
+      <label for="title" class="label">タイトル</label>
+      <input type="text" name="title" id="title" value="<%= @memo['title'] %>" class="text-input">
+    </div>
+    <div class="form-item">
+      <label for="content" class="label">内容</label>
+      <textarea name="content" id="content" class="textarea"><%= @memo['content'] %></textarea>
+    </div>
+  </div>
   <input type="hidden" name="_method" value="PATCH">
-  <button type="submit">変更</button>
+  <div class="btn-items">
+    <button type="submit" class="btn btn-success">変更</button>
+    <button type="button" onclick="location.href='/'" class="btn btn-secondary">戻る</button>
+  </div>
 </form>
-<a href="/memos/<%= params[:id] %>">戻る</a>

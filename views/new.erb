@@ -1,7 +1,16 @@
 <form action="/memos/create" method="post">
-  <label for="title">タイトル</label>
-  <input type="text" name="title" id="title">
-  <label for="content">内容</label>
-  <textarea name="content" id="content" cols="30" rows="10"></textarea>
-  <button type="submit">保存</button>
+  <div class="form-items">
+    <div class="form-item">
+      <label for="title" class="label">タイトル</label>
+      <input type="text" name="title" id="title" class="text-input">
+    </div>
+    <div class="form-item">
+      <label for="content" class="label">内容</label>
+      <textarea name="content" id="content" class="textarea"></textarea>
+    </div>
+    <div class="btn-items">
+      <button type="submit" class="btn btn-success">保存</button>
+      <button type="button" onclick="location.href='/'" class="btn btn-secondary">戻る</button>
+    </div>
+  </div>
 </form>
