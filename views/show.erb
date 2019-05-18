@@ -3,7 +3,9 @@
     <h1 class="memo-title"><%= @memo['title'] %></h1>
   </div>
   <div class="memo-body">
-    <p><%= @memo["content"] %></p>
+    <% @memo['content'].each_line do |line| %>
+      <p><%= line %></p>
+    <% end %>
   </div>
 </article>
 <div class="btn-items">
