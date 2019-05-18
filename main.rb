@@ -27,13 +27,23 @@ helpers do
       JSON.dump(memo, f)
     end
   end
+
+  def validate_empty
+    @error_messages = []
+    params.each do |key, value|
+      next unless value.empty?
+
+      @error_messages << "#{key}を入力してください"
+    end
+    @error_messages
+  end
 end
 
 before do
   find_json
 end
 
-post '/memos/create' do
+post '/memos/' do
   id = Time.now.strftime('%Y%m%d%H%M%S%L').to_i.to_s(36)
   title = params[:title]
   content = params[:content]
@@ -49,13 +59,15 @@ post '/memos/create' do
     }
   }
 
-  if @memos
+  validate_empty
+  if @error_messages.any?
+    @memo = memo[id.to_s]
+    erb :new
+  else
     @memos.merge!(memo)
     update_json(@memos)
-  else
-    update_json(memo)
+    redirect to("/memos/#{id}")
   end
-  redirect to("/memos/#{id}")
 end
 
 get '/memos/:id' do
@@ -69,13 +81,18 @@ get '/memos/:id/edit' do
 end
 
 patch '/memos/:id' do
-  memo = @memos[params[:id]]
-  memo['title'] = params[:title]
-  memo['content'] = params[:content]
-  memo['updated_at'] = Time.now
+  @memo = @memos[params[:id]]
+  validate_empty
+  if @error_messages.any?
+    erb :edit
+  else
+    @memo['title'] = params[:title]
+    @memo['content'] = params[:content]
+    @memo['updated_at'] = Time.now
 
-  update_json(@memos)
-  redirect to("/memos/#{params[:id]}")
+    update_json(@memos)
+    redirect to("/memos/#{params[:id]}")
+  end
 end
 
 delete '/memos/:id' do

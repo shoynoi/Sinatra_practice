@@ -1,3 +1,12 @@
+<div>
+  <% if @error_messages&.any? %>
+    <ul>
+      <% @error_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  <% end %>
+</div>
 <form action="/memos/<%= params[:id] %>" method="post">
   <div class="form-items">
     <div class="form-item">

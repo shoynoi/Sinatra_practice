@@ -1,12 +1,21 @@
-<form action="/memos/create" method="post">
+<div>
+  <% if @error_messages&.any? %>
+    <ul>
+      <% @error_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  <% end %>
+</div>
+<form action="/memos/" method="post">
   <div class="form-items">
     <div class="form-item">
       <label for="title" class="label">タイトル</label>
-      <input type="text" name="title" id="title" class="text-input">
+      <input type="text" name="title" id="title" class="text-input" value="<%= @memo[:title] if @memo %>">
     </div>
     <div class="form-item">
       <label for="content" class="label">内容</label>
-      <textarea name="content" id="content" class="textarea"></textarea>
+      <textarea name="content" id="content" class="textarea"><%= @memo[:content] if @memo %></textarea>
     </div>
     <div class="btn-items">
       <button type="submit" class="btn btn-success">保存</button>
