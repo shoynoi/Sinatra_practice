@@ -1,5 +1,7 @@
-<ul>
-  <% @sorted_memos.each do |id, memo| %>
-    <li><a href="/memos/<%= id %>"><%= memo['title'] %></a></li>
-  <% end %>
-</ul>
+<% unless @sorted_memos.empty? %>
+  <ul>
+    <% @sorted_memos.each do |id, memo| %>
+      <li><a href="/memos/<%= id %>" class="title-link"><%= memo['title'] %></a></li>
+    <% end %>
+  </ul>
+<% end %>

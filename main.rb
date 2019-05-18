@@ -17,6 +17,8 @@ helpers do
                File.open('memo.json') do |f|
                  JSON.parse(f.read)
                end
+             else
+               {}
              end
   end
 
