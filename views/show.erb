@@ -3,8 +3,12 @@
     <h1 class="memo-title"><%= @memo['title'] %></h1>
   </div>
   <div class="memo-body">
-    <% @memo['content'].each_line do |line| %>
-      <p><%= line %></p>
+    <% @memo['content'].each_line("") do |paragraph| %>
+      <p>
+        <% paragraph.each_line do |line| %>
+          <%= line.gsub(/\n/, '<br>') %>
+        <% end %>
+      </p>
     <% end %>
   </div>
 </article>
