@@ -1,6 +1,7 @@
 require 'sinatra'
 require 'sinatra/reloader'
 require 'json'
+require 'securerandom'
 
 get '/' do
   @sorted_memos = @memos.sort_by { |_id, memo| memo['updated_at'] }.reverse
@@ -37,6 +38,12 @@ helpers do
     end
     @error_messages
   end
+
+  def unique_id
+    id = SecureRandom.uuid
+    id = SecureRandom.uuid while @memos.key?(id)
+    id
+  end
 end
 
 before do
@@ -44,7 +51,7 @@ before do
 end
 
 post '/memos/' do
-  id = Time.now.strftime('%Y%m%d%H%M%S%L').to_i.to_s(36)
+  id = unique_id
   title = params[:title]
   content = params[:content]
   created_at = Time.now
