@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="/style.css" />
+    <title>メモアプリ</title>
+  </head>
+  <body>
+    <header>
+      <h1 class="title">メモアプリ</h1>
+      <% if request.path_info == '/' %>
+        <button onclick="location.href='/memos/new'" class="btn btn-primary">追加</button>
+      <% end %>
+    </header>
+    <div class="container">
+      <%= yield %>
+    </div>
+  </body>
+</html>

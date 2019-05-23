@@ -1,0 +1,22 @@
+<article class="memo">
+  <div class="memo-header">
+    <h1 class="memo-title"><%= @memo['title'] %></h1>
+  </div>
+  <div class="memo-body">
+    <% @memo['content'].each_line("") do |paragraph| %>
+      <p>
+        <% paragraph.each_line do |line| %>
+          <%= line.gsub(/\n/, '<br>') %>
+        <% end %>
+      </p>
+    <% end %>
+  </div>
+</article>
+<div class="btn-items">
+  <button type="button" onclick="location.href='/memos/<%= params[:id] %>/edit'" class="btn btn-primary">変更</button>
+  <form action="/memos/<%= params[:id] %>" method="post" onsubmit="return confirm('削除しますか?')">
+    <input type="hidden" name="_method" value="DELETE">
+    <button type="submit" class="btn btn-danger">削除</button>
+  </form>
+  <button type="button" onclick="location.href='/'" class="btn btn-secondary">戻る</button>
+</div>
